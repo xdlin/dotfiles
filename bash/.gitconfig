@@ -1,0 +1,40 @@
+[alias]
+	agnext = push origin HEAD:refs/for/next
+	am3 = am -3
+	br = branch
+	ci = commit -s
+	cleanall = !bash -c 'git clean -dfx  && git submodule foreach --recursive git clean -dfx'
+	co = checkout
+	cp = cherry-pick -x
+	df = diff
+	diffc = diff --cached
+	fulldiff = diff -p --stat --summary --full-index --binary
+	head = !git --no-pager log --pretty -1
+	heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;%H;%Cblue%f%Creset' | git name-rev --stdin --always --name-only | column -t -s';'"
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lgp = !git log -p
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	patch = format-patch
+	sm = submodule
+	smup = submodule update --init --recursive
+	st = status
+
+[branch]
+        autosetuprebase = always
+[color]
+        ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+	pager = true
+[core]
+	bare = false
+	filemode = true
+	logallrefupdates = true
+	repositoryformatversion = 0
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[user]
+	name = Xiangdong Lin
+	email = linxiangdong@baidu.com

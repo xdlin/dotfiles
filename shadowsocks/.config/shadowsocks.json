@@ -1,0 +1,8 @@
+{
+	"server":"106.187.52.109",
+	"server_port":4431,
+	"local_port":1080,
+	"password":"0xbadbeaf",
+	"timeout":600,
+	"method":"aes-256-cfb"
+}
