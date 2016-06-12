@@ -119,7 +119,8 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export RUST_SRC_PATH=~/src/rust-1.7.0/src/
-export PATH=$HOME/.cargo/bin:$HOME/.linuxbrew/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 export PS1="\[\033[38;5;33m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\h\[$(tput sgr0)\]\[\033[38;5;70m\]:\[$(tput sgr0)\]\[\033[38;5;64m\]\w >\[$(tput sgr0)\]"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source /home/linxiangdong/.nix-profile/etc/profile.d/nix.sh
