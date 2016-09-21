@@ -5,10 +5,12 @@ Plug 'cespare/vim-toml'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-git', { 'for': 'git' }
 "UI
-Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yggdroot/indentLine'
+Plug 'lifepillar/vim-solarized8'
+Plug 'rakr/vim-one'
+Plug 'rakr/vim-two-firewatch'
 "Tool
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'justinmk/vim-dirvish'
@@ -25,6 +27,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-characterize'
+Plug 'machakann/vim-sandwich'
 
 "dev
 Plug 'scrooloose/syntastic'
@@ -32,12 +35,10 @@ Plug 'racer-rust/vim-racer'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
+Plug 'metakirby5/codi.vim'
 call plug#end()
 
 set fileencodings=utf-8,gbk,latin1
-set background=dark
-set t_Co=256
-colo solarized
 set hidden
 set tabstop=4 shiftwidth=4 expandtab
 set smartcase
@@ -47,7 +48,18 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=r
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+    set guifont=InconsolataForPowerline\ NF\ Medium\ 14
+endif
+" set termguicolors
+set t_Co=256
+" set termguicolors
+if has("gui_running")
+    set background=light
+    colo one
+else
+    set background=dark
+    colo solarized8_dark_low
+    hi ColorColumn ctermbg=10 gui=reverse term=reverse
 endif
 set colorcolumn=80
 " plugin settings

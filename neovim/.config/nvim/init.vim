@@ -4,7 +4,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-git', { 'for': 'git' }
 "UI
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yggdroot/indentLine'
@@ -34,10 +34,9 @@ call plug#end()
 
 set fileencodings=utf-8,gbk,latin1
 set background=dark
-set t_Co=256
 set hidden
 set tabstop=4 shiftwidth=4 expandtab
-colo solarized
+colo solarized8_dark_low
 "
 " plugin settings
 let g:airline_powerline_fonts = 1

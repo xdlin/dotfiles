@@ -104,6 +104,18 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+man() {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[01;31m") \
+    LESS_TERMCAP_md=$(printf "\e[01;38;5;74m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[38;5;212m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[04;38;5;146m") \
+    man "$@"
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -118,9 +130,8 @@ fi
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-export RUST_SRC_PATH=~/src/rust-1.7.0/src/
+export RUST_SRC_PATH=~/src/rust/src/
 export PATH=$HOME/.cargo/bin:$PATH
 export PS1="\[\033[38;5;33m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\h\[$(tput sgr0)\]\[\033[38;5;70m\]:\[$(tput sgr0)\]\[\033[38;5;64m\]\w >\[$(tput sgr0)\]"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-source /home/linxiangdong/.nix-profile/etc/profile.d/nix.sh
