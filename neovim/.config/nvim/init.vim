@@ -36,7 +36,7 @@ set fileencodings=utf-8,gbk,latin1
 set background=dark
 set hidden
 set tabstop=4 shiftwidth=4 expandtab
-colo solarized8_dark_low
+colo solarized8_dark
 "
 " plugin settings
 let g:airline_powerline_fonts = 1

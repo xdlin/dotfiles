@@ -9,6 +9,8 @@ Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yggdroot/indentLine'
 Plug 'lifepillar/vim-solarized8'
+Plug 'romainl/flattened'
+Plug 'altercation/vim-colors-solarized'
 Plug 'rakr/vim-one'
 Plug 'rakr/vim-two-firewatch'
 "Tool
@@ -50,16 +52,26 @@ if has("gui_running")
     set guioptions-=r
     set guifont=InconsolataForPowerline\ NF\ Medium\ 14
 endif
-" set termguicolors
+if has('persistent_undo')
+    let s:undo_dir=expand('~/.vim/undo')
+    if !isdirectory(s:undo_dir)
+        call mkdir(s:undo_dir)
+    endif
+    let &undodir=s:undo_dir
+    set undofile
+endif
+if has('clipboard')
+    set clipboard^=unnamedplus,unnamed
+endif
 set t_Co=256
-" set termguicolors
+set termguicolors
 if has("gui_running")
     set background=light
     colo one
 else
     set background=dark
-    colo solarized8_dark_low
-    hi ColorColumn ctermbg=10 gui=reverse term=reverse
+    colo solarized8_dark
+    " hi ColorColumn ctermbg=10 gui=reverse term=reverse guibg=#073642
 endif
 set colorcolumn=80
 " plugin settings
