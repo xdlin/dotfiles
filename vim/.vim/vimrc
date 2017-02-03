@@ -30,13 +30,16 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-characterize'
 Plug 'machakann/vim-sandwich'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'conradirwin/vim-bracketed-paste'
+Plug 'a.vim'
 
 "dev
 Plug 'scrooloose/syntastic'
 Plug 'racer-rust/vim-racer'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'jreybert/vimagit'
+"Plug 'jreybert/vimagit'
 Plug 'metakirby5/codi.vim'
 call plug#end()
 
@@ -74,10 +77,17 @@ else
     " hi ColorColumn ctermbg=10 gui=reverse term=reverse guibg=#073642
 endif
 set colorcolumn=80
+set completeopt+=menu,menuone
+set shortmess+=cI
 " plugin settings
 let g:airline_powerline_fonts = 1
 let g:indentLine_char = "¦"
 
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " rust settings
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs :map <buffer> <F5> :RustRun<CR>

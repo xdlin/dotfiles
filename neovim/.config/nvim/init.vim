@@ -21,6 +21,7 @@ Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
+Plug 'conradirwin/vim-bracketed-paste'
 "dev
 Plug 'scrooloose/syntastic'
 Plug 'racer-rust/vim-racer'

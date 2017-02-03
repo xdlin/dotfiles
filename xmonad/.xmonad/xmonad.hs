@@ -100,6 +100,15 @@ myManageHook = composeAll
 toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
 toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
+goToNextScreen ws =
+  case W.visible ws of
+    newVisible:rest -> ws { W.current = newVisible
+                          , W.visible = W.current ws:rest
+                          }
+    _ -> ws
+
+goToNextScreenX = windows goToNextScreen
+
 myConfig = desktopConfig
 	{ modMask = mod4Mask
 	, terminal = myTerminal
@@ -125,6 +134,7 @@ myKeys= [ ("M-p", spawn myDmenu)
 	, ("M-<Left>", prevScreen)
 	, ("M-S-<Left>", shiftPrevScreen >> prevScreen)
 	, ("M-z", toggleWS)
+	, ("M-x", swapNextScreen >> goToNextScreenX)
 	, ("C-M1-<Right>",
 		do t <- findWorkspace getSortByXineramaRule Next NonEmptyWS 2
 		   windows . W.view $ t)

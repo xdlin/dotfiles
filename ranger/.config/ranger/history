@@ -10,5 +10,6 @@ s
 rename cpp
 find 
 shell mkdir ngnix
-open_with 
 search index
+open_with 
+delete
