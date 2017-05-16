@@ -16,7 +16,7 @@ Plug 'rakr/vim-two-firewatch'
 "Tool
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'justinmk/vim-dirvish'
-Plug 'bufexplorer.zip'
+Plug 'vim-scripts/bufexplorer.zip'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
@@ -30,12 +30,12 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-characterize'
 Plug 'machakann/vim-sandwich'
-Plug 'lifepillar/vim-mucomplete'
+"Plug 'lifepillar/vim-mucomplete'
 Plug 'conradirwin/vim-bracketed-paste'
-Plug 'a.vim'
+Plug 'vim-scripts/a.vim'
 
 "dev
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'racer-rust/vim-racer'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -104,6 +104,8 @@ let g:tagbar_type_rust = {
         \'i:impls,trait implementations',
     \]
     \}
+let g:rustfmt_autosave = 1
+let g:racer_experimental_completer = 1
 
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <F2> :CtrlPTag<CR>
@@ -113,6 +115,7 @@ nnoremap <silent> <F5> :make<CR>
 nnoremap <silent> <F6> :e $MYVIMRC<CR>
 nnoremap <silent> <F11> :TagbarToggle<CR>
 nnoremap <silent> <F12> :NERDTreeToggle<CR>
+inoremap <S-Insert> <c-r>*
 
 command! CN :e ++enc=cp936
 command! CU :e ++enc=utf-8
