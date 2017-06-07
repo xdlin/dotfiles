@@ -1,16 +1,11 @@
 call plug#begin('~/.vim/plugged')
 "Syntax
-Plug 'rust-lang/rust.vim'
-Plug 'cespare/vim-toml'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-git', { 'for': 'git' }
+Plug 'sheerun/vim-polyglot'
 "UI
 Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yggdroot/indentLine'
 Plug 'lifepillar/vim-solarized8'
-Plug 'romainl/flattened'
-Plug 'altercation/vim-colors-solarized'
 Plug 'rakr/vim-one'
 Plug 'rakr/vim-two-firewatch'
 "Tool
@@ -20,27 +15,26 @@ Plug 'vim-scripts/bufexplorer.zip'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
-Plug 'rking/ag.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-characterize'
 Plug 'machakann/vim-sandwich'
-"Plug 'lifepillar/vim-mucomplete'
 Plug 'conradirwin/vim-bracketed-paste'
 Plug 'vim-scripts/a.vim'
-
-"dev
-"Plug 'scrooloose/syntastic'
-Plug 'racer-rust/vim-racer'
-Plug 'tpope/vim-fugitive'
+Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
-"Plug 'jreybert/vimagit'
-Plug 'metakirby5/codi.vim'
+" Dev
+"Plug 'racer-rust/vim-racer'
+"Plug 'maralla/completor.vim'
+Plug 'ajh17/VimCompletesMe'
+"Plug 'metakirby5/codi.vim'
 call plug#end()
 
 set fileencodings=utf-8,gbk,latin1
@@ -83,11 +77,10 @@ set shortmess+=cI
 let g:airline_powerline_fonts = 1
 let g:indentLine_char = "¦"
 
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" ale
+let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 0
+let g:ale_open_list = 1
 " rust settings
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs :map <buffer> <F5> :RustRun<CR>
@@ -116,6 +109,8 @@ nnoremap <silent> <F6> :e $MYVIMRC<CR>
 nnoremap <silent> <F11> :TagbarToggle<CR>
 nnoremap <silent> <F12> :NERDTreeToggle<CR>
 inoremap <S-Insert> <c-r>*
+nnoremap <silent> <C-k> <Plug>(ale_previous_wrap)
+nnoremap <silent> <C-j> <Plug>(ale_next_wrap)
 
 command! CN :e ++enc=cp936
 command! CU :e ++enc=utf-8
