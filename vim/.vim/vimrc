@@ -5,9 +5,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'yggdroot/indentLine'
-Plug 'lifepillar/vim-solarized8'
 Plug 'rakr/vim-one'
 Plug 'rakr/vim-two-firewatch'
+Plug 'ericbn/vim-solarized'
 "Tool
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'justinmk/vim-dirvish'
@@ -47,7 +47,11 @@ if has("gui_running")
     set guioptions-=T
     set guioptions-=m
     set guioptions-=r
-    set guifont=InconsolataForPowerline\ NF\ Medium\ 14
+    if has("osx")
+        set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono:h14
+    else
+        set guifont=InconsolataForPowerline\ NF\ Medium\ 14
+    endif
 endif
 if has('persistent_undo')
     let s:undo_dir=expand('~/.vim/undo')
@@ -67,8 +71,7 @@ if has("gui_running")
     colo one
 else
     set background=dark
-    colo solarized8_dark
-    " hi ColorColumn ctermbg=10 gui=reverse term=reverse guibg=#073642
+    colo solarized
 endif
 set colorcolumn=80
 set completeopt+=menu,menuone

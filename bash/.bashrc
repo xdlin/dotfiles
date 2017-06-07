@@ -9,6 +9,7 @@ case $- in
 esac
 
 export TERM=xterm-256color
+export EDITOR=`which vim`
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -136,6 +137,6 @@ export QT_IM_MODULE=ibus
 export RUST_SRC_PATH=~/src/rust/src/
 export PATH=$HOME/.cargo/bin:$PATH:$HOME/bin
 export PS1="\[\033[38;5;33m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\h\[$(tput sgr0)\]\[\033[38;5;70m\]:\[$(tput sgr0)\]\[\033[38;5;64m\]\w >\[$(tput sgr0)\]"
-export HOMEBREW_GITHUB_API_TOKEN=0a4f84d95d1c8bd63ea1948bb75275563ad8466e
+export HOMEBREW_GITHUB_API_TOKEN=e571fc29cb566978c7a42a44ac887d3265a16ec1
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
