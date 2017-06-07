@@ -124,14 +124,18 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  elif [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
   fi
 fi
+
 
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export RUST_SRC_PATH=~/src/rust/src/
-export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH:$HOME/bin
 export PS1="\[\033[38;5;33m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\h\[$(tput sgr0)\]\[\033[38;5;70m\]:\[$(tput sgr0)\]\[\033[38;5;64m\]\w >\[$(tput sgr0)\]"
-
+export HOMEBREW_GITHUB_API_TOKEN=0a4f84d95d1c8bd63ea1948bb75275563ad8466e
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh

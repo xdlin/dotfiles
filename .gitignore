@@ -1,12 +1,14 @@
 neovim/.config/nvim/plugged/vim-devicons/doc/tags
+ranger/.config/ranger/bookmarks
+ranger/.config/ranger/commands.py
 ranger/.config/ranger/history
 vim/.vim/autoload/plug.vim.old
-vim/.vim/undo/
 vim/.vim/plugged/
+vim/.vim/undo/
+xmonad/.xmonad/*.o
 xmonad/.xmonad/lib/Solarized.hi
 xmonad/.xmonad/lib/Solarized.o
 xmonad/.xmonad/xmonad-x86_64-linux
 xmonad/.xmonad/xmonad.errors
 xmonad/.xmonad/xmonad.hi
-xmonad/.xmonad/xmonad.o
-xmonad/.xmonad/*.o
+
