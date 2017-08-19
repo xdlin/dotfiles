@@ -130,6 +130,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -137,6 +139,5 @@ export QT_IM_MODULE=ibus
 export RUST_SRC_PATH=~/src/rust/src/
 export PATH=$HOME/.cargo/bin:$PATH:$HOME/bin
 export PS1="\[\033[38;5;33m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\h\[$(tput sgr0)\]\[\033[38;5;70m\]:\[$(tput sgr0)\]\[\033[38;5;64m\]\w >\[$(tput sgr0)\]"
-export HOMEBREW_GITHUB_API_TOKEN=670389aef0bbbebb2076302c8100b15654923dd3
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
