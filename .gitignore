@@ -4,7 +4,7 @@ ranger/.config/ranger/commands.py
 ranger/.config/ranger/history
 vim/.vim/autoload/plug.vim.old
 vim/.vim/plugged/
-vim/.vim/undo/
+vim/.vim/undo/*
 xmonad/.xmonad/*.o
 xmonad/.xmonad/lib/Solarized.hi
 xmonad/.xmonad/lib/Solarized.o

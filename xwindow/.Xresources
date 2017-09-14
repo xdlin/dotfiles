@@ -58,7 +58,7 @@
 Xft*dpi:       96
 Xft*antialias: True
 Xft*hinting:   True
-Xft*hintstyle: hintlight
+Xft*hintstyle: hintslight
 Xft*lcdfilter: lcddefault
 Xft*rgba: rgb
 

@@ -13,7 +13,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'justinmk/vim-dirvish'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'jremmen/vim-ripgrep'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -31,10 +30,9 @@ Plug 'vim-scripts/a.vim'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 " Dev
-"Plug 'racer-rust/vim-racer'
-"Plug 'maralla/completor.vim'
-Plug 'ajh17/VimCompletesMe'
-"Plug 'metakirby5/codi.vim'
+Plug 'lifepillar/vim-mucomplete'
+Plug 'Rip-Rip/clang_complete'
+
 call plug#end()
 
 set fileencodings=utf-8,gbk,latin1
@@ -74,16 +72,21 @@ else
     colo solarized
 endif
 set colorcolumn=80
-set completeopt+=menu,menuone
 set shortmess+=cI
 " plugin settings
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 let g:indentLine_char = "¦"
 
 " ale
+" use quickfix instead of loclist
 let g:ale_set_quickfix = 1
 let g:ale_set_loclist = 0
-let g:ale_open_list = 1
+let g:ale_linters = {'cpp': ['clang']}
+let g:ale_cpp_gcc_options='-std=c++17 -Wall'
+let g:ale_lint_on_enter = 0 "disable on opening files
+let g:ale_lint_on_text_changed = 'never'
+
 " rust settings
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs compiler cargo
 autocmd BufRead,BufNewFile Cargo.toml,Cargo.lock,*.rs :map <buffer> <F5> :RustRun<CR>
@@ -102,6 +105,12 @@ let g:tagbar_type_rust = {
     \}
 let g:rustfmt_autosave = 1
 let g:racer_experimental_completer = 1
+set completeopt-=preview
+set completeopt+=longest,menuone,noinsert,noselect
+let g:clang_library_path='/usr/lib/llvm-6.0/lib'
+let g:clang_user_options = '-std=c++17'
+let g:clang_complete_auto = 1
+let g:mucomplete#enable_auto_at_startup = 1
 
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <F2> :CtrlPTag<CR>

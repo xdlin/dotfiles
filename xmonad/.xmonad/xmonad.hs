@@ -29,7 +29,7 @@ myDmenu = "/usr/bin/dmenu_run -b -p \">\""
 	++ " -sb " ++ "\"" ++ solarizedBase2 ++ "\""
 	++ " -sf " ++ "\"" ++ solarizedOrangeD ++ "\""
 myTrayer = "/usr/bin/trayer --align right --edge top"
-	++ " --width 10 --transparent true --alpha 0 --height 24"
+	++ " --width 10 --transparent true --alpha 0 --height 27"
 	++ " --tint 0xfdf6e3" {- solarizedBase3(0xfdf6e3) -}
 
 scratchpads = [
@@ -84,11 +84,11 @@ myLogHook = do
 	dynamicLogWithPP . namedScratchpadFilterOutWorkspacePP $ myPP
 
 myStartupHook =
-	(spawn "/usr/bin/feh --bg-scale ~/Pictures/wallpaper/current.jpg") <+>
 	(spawn "/usr/bin/xsettingsd") <+>
-	(spawn "/usr/bin/ibus-daemon -d") <+>
+	(spawn "/usr/bin/feh --bg-scale ~/Pictures/wallpaper/current.jpg") <+>
 	(spawn "xrandr --output DP1-8 --auto --left-of DP1-1 --primary") <+>
-	(spawn myTrayer)
+	(spawn myTrayer) <+>
+	(spawn "/usr/bin/ibus-daemon -d")
 
 myWorkspaces = ["1","2","3","4","5","6","7","8:vm","9:web"]
 
