@@ -139,5 +139,6 @@ export QT_IM_MODULE=ibus
 export RUST_SRC_PATH=~/src/rust/src/
 export PATH=$HOME/.cargo/bin:$PATH:$HOME/bin
 export PS1="\[\033[38;5;33m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\h\[$(tput sgr0)\]\[\033[38;5;70m\]:\[$(tput sgr0)\]\[\033[38;5;64m\]\w >\[$(tput sgr0)\]"
+export HOMEBREW_GITHUB_API_TOKEN=1739b9768d1ae39d922ce2d22a2b05ec732a59f5
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
