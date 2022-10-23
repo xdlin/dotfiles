@@ -1,0 +1,42 @@
+Config { font            = "xft:Noto Sans CJK SC:weight=bold:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:Font Awesome:pixelsize=12"
+                           , "xft:DejaVuSansMono Nerd Font Mono"
+                           , "xft:DejaVuSansMono Nerd Font Mono:pixelsize=8"
+                           , "xft:WenQuanYi Zen Hei:size=12"
+                           ]
+       , bgColor      = "#2E3440"
+       , fgColor      = "#D8DEE9"
+       , position     = TopSize L 90 24
+       , lowerOnStart = True
+       , hideOnStart  = False
+       , overrideRedirect =  False
+       , pickBroadest     =  False
+       , allDesktops  = True
+       , persistent   = False
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%UnsafeXMonadLog% }{\
+                    \<box type=VBoth width=1 mb=1 mt=1 color=#af8700><fc=#af8700>%multicpu%</fc></box>\
+                    \<box type=VBoth width=1 mb=1 mt=1 color=#af8700><fc=#af8700>%memory%</fc></box>\
+                    \<box type=VBoth width=1 mb=1 mt=1 color=#d75f00><fc=#d75f00>%date%</fc></box>\
+                    \<action=`pactl set-sink-mute @DEFAULT_SINK@ toggle`>\
+                        \<box type=VBoth width=1 mb=1 mt=1 color=#dc322f><fc=#dc322f>%alsa:default:Master%</fc></box>\
+                        \</action>\
+                    \"
+
+       , commands = [ Run UnsafeXMonadLog
+                    , Run Date "<fn=2>\xf43a</fn>  %Y-%m-%d %H:%M " "date" 20
+                    , Run Alsa "default" "Master"
+                        [ "-t", "<status> <volume>%"
+                        , "--"
+                        , "-O", "<fc=#dc322f><fn=2>\xf028</fn></fc>"
+                        , "-o", "<fc=#dc322f><fn=2>\xfc5d</fn></fc>"
+                        ]
+                    , Run MultiCpu
+                             [ "--template" , "<fn=2>\xe266</fn><fn=3><autovbar></fn>"
+                             ] 10
+                     , Run Memory
+                             [ "--template" ,"<fn=2>\xf85a</fn><fn=3><usedbar></fn>"
+                             ] 10
+                    ]
+       }

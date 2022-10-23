@@ -8,9 +8,6 @@ case $- in
       *) return;;
 esac
 
-export TERM=xterm-256color
-export EDITOR=`which vim`
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -40,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -60,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -92,9 +89,8 @@ fi
 
 # some more ls aliases
 alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-alias g='gnome-open'
+#alias la='ls -A'
+#alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -105,18 +101,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-man() {
-  env \
-    LESS_TERMCAP_mb=$(printf "\e[01;31m") \
-    LESS_TERMCAP_md=$(printf "\e[01;38;5;74m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[38;5;212m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[04;38;5;146m") \
-    man "$@"
-}
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -125,20 +109,46 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
-  elif [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
   fi
 fi
 
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-export RUST_SRC_PATH=~/src/rust/src/
-export PATH=$HOME/.cargo/bin:$PATH:$HOME/bin
-export PS1="\[\033[38;5;33m\]\u\[$(tput sgr0)\]\[\033[38;5;166m\]@\h\[$(tput sgr0)\]\[\033[38;5;70m\]:\[$(tput sgr0)\]\[\033[38;5;64m\]\w >\[$(tput sgr0)\]"
-export HOMEBREW_GITHUB_API_TOKEN=1739b9768d1ae39d922ce2d22a2b05ec732a59f5
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.bash-powerline.sh ] && source ~/.bash-powerline.sh
+
+export ML_PATH="$HOME/dev/ml"
+export EDITOR=`which vim`
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export BAT_THEME="TwoDark"
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export SPARK_HOME=/opt/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin:$JAVA_HOME/bin
+export PATH=$PATH:/usr/local/cuda-11.7/bin
+export PATH=$PATH:/opt/conda/bin
+export PATH=$PATH:/opt/sumneko/bin
+export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64
+export MPLBACKEND='module://matplotlib-backend-kitty'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
+        . "/opt/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+
+
+# load z.sh
+. ~/.bashrc.d/z.sh
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

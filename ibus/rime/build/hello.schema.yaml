@@ -1,0 +1,22 @@
+__build_info:
+  rime_version: 1.7.3
+  timestamps:
+    default: 1649520780
+    default.custom: 1665554594
+    hello.custom: 0
+    hello.schema: 1665553697
+    key_bindings: 1649520780
+    key_bindings.custom: 0
+    punctuation: 1649520780
+    punctuation.custom: 0
+engine:
+  processors:
+    - fluid_editor
+  segmentors:
+    - fallback_segmentor
+menu:
+  page_size: 7
+schema:
+  name: "大家好"
+  schema_id: hello
+  version: 1
