@@ -1,4 +1,0 @@
-patch:
-  punctuator/half_shape:
-    "@": "@"
-  "translator/dictionary": luna_pinyin.extended
