@@ -17,10 +17,6 @@
       "rev": "74114f0df664f14d7c228945693ba68a3b70a794",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
-    "mini.clue": {
-      "rev": "f8a11789cf34a7bae396dc0f828d06cdb5066793",
-      "src": "https://github.com/echasnovski/mini.clue"
-    },
     "mini.nvim": {
       "rev": "402ee6c6ec8ea44b22330446c8fb4e615fd3953e",
       "src": "https://github.com/nvim-mini/mini.nvim"
