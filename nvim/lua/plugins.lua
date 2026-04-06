@@ -4,7 +4,6 @@ vim.pack.add({
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/nvim-mini/mini.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/echasnovski/mini.clue",
   { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 
   -- dependencies
@@ -17,17 +16,6 @@ require("mini.extra").setup()
 require("mini.icons").setup()
 require("mini.files").setup({
   windows = { preview = true }
-})
-require("mini.clue").setup({
-  triggers = {
-    { mode = "n", keys = "<leader>" },
-    { mode = 'n', keys = '[' },
-    { mode = 'n', keys = ']' },
-  },
-
-  clues = {
-    require("mini.clue").gen_clues.square_brackets(),
-  },
 })
 require("mini.pick").setup({
   window = {
@@ -81,4 +69,16 @@ require("nvim-treesitter").setup({
   ensure_installed = { "lua", "rust" },
   highlight = { enable = true },
 })
+
+local misc = require('mini.misc')
+local later = function(f) misc.safely('later', f) end
+local on_event = function(ev, f) misc.safely('event:' .. ev, f) end
+
+later(function()
+  require('mini.cmdline').setup()
+end)
+
+on_event('InsertEnter', function()
+  require('mini.completion').setup()
+end)
 -- vim: ts=2 sts=2 sw=2 et

@@ -4,12 +4,12 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "open float
 
 local pick = require("mini.pick")
 local extra = require("mini.extra")
-vim.keymap.set("n", "<leader>be", pick.builtin.buffers, { desc = "search buffers" })
 vim.keymap.set("n", "<C-p>", pick.builtin.files, { desc = "search files" })
 vim.keymap.set("n", "<leader>sb", pick.builtin.buffers, { desc = "search buffers" })
 vim.keymap.set("n", "<leader>sf", pick.builtin.files, { desc = "search files" })
 vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "grep live" })
 vim.keymap.set("n", "<leader>sh", pick.builtin.help, { desc = "search help" })
+vim.keymap.set("n", "<leader>si", '<cmd>edit $MYVIMRC<CR>', { desc = "edit vimrc" })
 
 vim.keymap.set("n", "<leader>s.", function()
   extra.pickers.oldfiles()
