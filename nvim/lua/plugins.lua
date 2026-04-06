@@ -10,8 +10,6 @@ vim.pack.add({
   "https://github.com/nvim-tree/nvim-web-devicons",
 })
 
-require('mini.surround').setup()
-require("mini.ai").setup()
 require("mini.extra").setup()
 require("mini.icons").setup()
 require("mini.files").setup({
@@ -49,24 +47,23 @@ require("lualine").setup({
     },
   },
 })
-require('blink.cmp').setup({
-  keymap = {
-    preset = "default",
-    ['<CR>'] = { 'accept', 'fallback' },
-  },
-  appearance = { nerd_font_variant = "mono" },
-  completion = {
-    documentation = { auto_show = false },
-  },
-  signature = { enabled = true },
-  sources = { default = { "lsp", "path", "snippets", "buffer" }, },
-})
+-- require('blink.cmp').setup({
+--   keymap = {
+--     preset = "default",
+--     ['<CR>'] = { 'accept', 'fallback' },
+--   },
+--   appearance = { nerd_font_variant = "mono" },
+--   completion = {
+--     documentation = { auto_show = false },
+--   },
+--   signature = { enabled = true },
+--   sources = { default = { "lsp", "path", "snippets", "buffer" }, },
+-- })
 
 vim.cmd.colorscheme('gruvbox-material')
-require("gitsigns").setup({ signcolumn = false })
 
 require("nvim-treesitter").setup({
-  ensure_installed = { "lua", "rust" },
+  ensure_installed = { "lua", "rust", "go" },
   highlight = { enable = true },
 })
 
@@ -76,9 +73,26 @@ local on_event = function(ev, f) misc.safely('event:' .. ev, f) end
 
 later(function()
   require('mini.cmdline').setup()
+  require('mini.surround').setup()
+  require("mini.ai").setup()
+end)
+
+on_event('BufReadPre', function()
+  require("gitsigns").setup({ signcolumn = false })
 end)
 
 on_event('InsertEnter', function()
-  require('mini.completion').setup()
+  require('blink.cmp').setup({
+    keymap = {
+      preset = "default",
+      ['<CR>'] = { 'accept', 'fallback' },
+    },
+    appearance = { nerd_font_variant = "mono" },
+    completion = {
+      documentation = { auto_show = false },
+    },
+    signature = { enabled = true },
+    sources = { default = { "lsp", "path", "snippets", "buffer" }, },
+  })
 end)
 -- vim: ts=2 sts=2 sw=2 et

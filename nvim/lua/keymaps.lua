@@ -4,7 +4,6 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = "open quickfix window" })
 vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = "open float window" })
 
-
 -- Search
 local pick = require("mini.pick")
 local extra = require("mini.extra")
@@ -26,7 +25,6 @@ end, { desc = "search current word" })
 vim.keymap.set('n', "sr", function()
   extra.pickers.lsp({ scope = 'references' })
 end)
-
 
 -- Toggle
 vim.keymap.set("n", "<leader>tt", function()
