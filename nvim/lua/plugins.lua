@@ -39,7 +39,6 @@ require("mini.pick").setup({
 require("lualine").setup({
   options = {
     theme = "gruvbox-material",
-    -- section_separators = { left = "", right = "" },
     section_separators = { left = '', right = '' },
     component_separators = "",
   },
@@ -66,7 +65,10 @@ later(function()
 end)
 
 on_event('BufReadPre', function()
-  require("gitsigns").setup({ signcolumn = false })
+  require("gitsigns").setup({
+    signcolumn = true,
+    on_attach = require("keymaps").gitsigns_attach,
+  })
 end)
 
 on_event('InsertEnter', function()

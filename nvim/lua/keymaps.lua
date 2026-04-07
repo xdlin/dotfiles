@@ -1,3 +1,5 @@
+local M = {}
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic
@@ -43,13 +45,28 @@ vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error"
 vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
+function M.gitsigns_attach(bufnr)
+  local gs = package.loaded.gitsigns
+  local function map(mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+  end
+
+  map('n', ']c', function()
+    if vim.wo.diff then vim.cmd.normal({ ']c', bang = true })
+    else gs.nav_hunk('next') end
+  end, 'Next git hunk')
+
+  map('n', '[c', function()
+    if vim.wo.diff then vim.cmd.normal({ '[c', bang = true })
+    else gs.nav_hunk('prev') end
+  end, 'Prev git hunk')
+end
+
 -- readline for cmd mode
 vim.keymap.set('c', '<C-a>', '<Home>')
 vim.keymap.set('c', '<C-e>', '<End>')
 vim.keymap.set('c', '<C-b>', '<Left>')
 vim.keymap.set('c', '<C-f>', '<Right>')
-vim.keymap.set('c', '<C-p>', '<Up>')
-vim.keymap.set('c', '<C-n>', '<Down>')
 vim.keymap.set('c', '<M-b>', '<S-Left>')
 vim.keymap.set('c', '<M-f>', '<S-Right>')
 vim.keymap.set('c', '<C-h>', '<BS>')
@@ -62,4 +79,5 @@ vim.keymap.set('c', '<C-k>', function()
   vim.fn.setcmdline(line:sub(1, pos - 1))
 end)
 
+return M
 -- vim: ts=2 sts=2 sw=2 et
