@@ -5,26 +5,17 @@ vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = "open quic
 vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = "open float window" })
 
 -- Search
-local pick = require("mini.pick")
-local extra = require("mini.extra")
-vim.keymap.set("n", "<C-p>", pick.builtin.files, { desc = "search files" })
-vim.keymap.set("n", "<leader>sb", pick.builtin.buffers, { desc = "search buffers" })
-vim.keymap.set("n", "<leader>sf", pick.builtin.files, { desc = "search files" })
-vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "grep live" })
-vim.keymap.set("n", "<leader>sh", pick.builtin.help, { desc = "search help" })
+local pick = require("mini.pick").builtin
+local ext_pick = require("mini.extra").pickers
+vim.keymap.set("n", "<C-p>", pick.files, { desc = "search files" })
+vim.keymap.set("n", "<leader>sb", pick.buffers, { desc = "search buffers" })
+vim.keymap.set("n", "<leader>sf", pick.files, { desc = "search files" })
+vim.keymap.set("n", "<leader>sg", pick.grep_live, { desc = "grep live" })
+vim.keymap.set("n", "<leader>sh", pick.help, { desc = "search help" })
 vim.keymap.set("n", "<leader>si", '<cmd>edit $MYVIMRC<CR>', { desc = "edit vimrc" })
-
-vim.keymap.set("n", "<leader>s.", function()
-  extra.pickers.oldfiles()
-end, {desc = "recent files"})
-
-vim.keymap.set("n", "<leader>sw", function()
-  pick.builtin.grep({ pattern = vim.fn.expand("<cword>") })
-end, { desc = "search current word" })
-
-vim.keymap.set('n', "sr", function()
-  extra.pickers.lsp({ scope = 'references' })
-end)
+vim.keymap.set("n", "<leader>sw", function() pick.grep({ pattern = vim.fn.expand("<cword>") }) end, { desc = "search current word" })
+vim.keymap.set('n', "<leader>sr", function() ext_pick.lsp({ scope = 'references' }) end, {desc = "lsp references"})
+vim.keymap.set("n", "<leader>s.", function() ext_pick.oldfiles() end, {desc = "recent files"})
 
 -- Toggle
 vim.keymap.set("n", "<leader>tt", function()
@@ -51,4 +42,20 @@ vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" 
 vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+
+-- readline for cmd mode
+vim.keymap.set('c', '<C-a>', '<Home>')
+vim.keymap.set('c', '<C-e>', '<End>')
+vim.keymap.set('c', '<C-b>', '<Left>')
+vim.keymap.set('c', '<C-f>', '<Right>')
+vim.keymap.set('c', '<C-p>', '<Up>')
+vim.keymap.set('c', '<C-n>', '<Down>')
+vim.keymap.set('c', '<M-b>', '<S-Left>')
+vim.keymap.set('c', '<M-f>', '<S-Right>')
+vim.keymap.set('c', '<C-h>', '<BS>')
+vim.keymap.set('c', '<C-d>', '<Del>')
+vim.keymap.set('c', '<C-w>', '<C-w>')
+vim.keymap.set('c', '<C-u>', '<C-u>')
+vim.keymap.set('c', '<C-k>', '<C-\\>e getcmdline()[:getcmdpos()-2] <CR>')
+
 -- vim: ts=2 sts=2 sw=2 et
