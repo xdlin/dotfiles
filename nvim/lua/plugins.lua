@@ -10,6 +10,8 @@ vim.pack.add({
   "https://github.com/nvim-tree/nvim-web-devicons",
 })
 
+require("gruvbox-material").setup()
+
 require("mini.extra").setup()
 require("mini.icons").setup()
 require("mini.files").setup({
@@ -47,8 +49,6 @@ require("lualine").setup({
     },
   },
 })
-
-vim.cmd.colorscheme('gruvbox-material')
 
 require("nvim-treesitter").setup({
   ensure_installed = { "lua", "rust", "go" },
