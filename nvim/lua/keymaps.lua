@@ -56,6 +56,6 @@ vim.keymap.set('c', '<C-h>', '<BS>')
 vim.keymap.set('c', '<C-d>', '<Del>')
 vim.keymap.set('c', '<C-w>', '<C-w>')
 vim.keymap.set('c', '<C-u>', '<C-u>')
-vim.keymap.set('c', '<C-k>', '<C-\\>e getcmdline()[:getcmdpos()-2] <CR>')
+vim.keymap.set('c', '<C-k>', '<C-\\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>')
 
 -- vim: ts=2 sts=2 sw=2 et
