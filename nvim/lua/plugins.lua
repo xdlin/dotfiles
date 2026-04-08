@@ -3,7 +3,7 @@ vim.pack.add({
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/nvim-mini/mini.nvim",
-  "https://github.com/nvim-treesitter/nvim-treesitter",
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
   { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
 
   -- dependencies
