@@ -1,6 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.loader.enable()
+require('vim._core.ui2').enable({})
 require("config")
 require("plugins")
 require("lsp")
